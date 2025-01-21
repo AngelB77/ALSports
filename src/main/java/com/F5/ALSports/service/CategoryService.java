@@ -18,4 +18,12 @@ public class CategoryService {
     public List<Category> getAll() {
         return categoryRepository.findAll();
     }
+
+    public Category addCategory(Category newCategory) {
+       return categoryRepository.save(newCategory);
+    }
+
+    public void deleteCategory(int id) {
+        categoryRepository.deleteById(id);
+    }
 }
