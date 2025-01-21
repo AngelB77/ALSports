@@ -8,27 +8,29 @@ import jakarta.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String name;
     private int price;
-    private String ImageUrl;
+    private String imageUrl;
 
+public Product() {
 
+}
     public Product(String name, int price, String imageUrl) {
         this.name = name;
         this.price = price;
-        ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
-    public Product(long id) {
+    public Product(int id) {
         this.id = id;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -49,10 +51,10 @@ public class Product {
     }
 
     public String getImageUrl() {
-        return ImageUrl;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 }
