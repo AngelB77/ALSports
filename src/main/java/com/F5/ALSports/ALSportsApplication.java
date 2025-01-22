@@ -10,4 +10,5 @@ public class ALSportsApplication {
 		SpringApplication.run(ALSportsApplication.class, args);
 	}
 
+
 }
