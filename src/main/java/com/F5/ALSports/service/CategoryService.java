@@ -1,5 +1,8 @@
 package com.F5.ALSports.service;
 
+import com.F5.ALSports.dtosCategory.CategoryMapper;
+import com.F5.ALSports.dtosCategory.CategoryRequest;
+import com.F5.ALSports.dtosCategory.CategoryResponse;
 import com.F5.ALSports.model.Category;
 import com.F5.ALSports.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,12 @@ public class CategoryService {
 
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
+    }
+
+    public CategoryResponse saveCategory(CategoryRequest categoryRequest) {
+        Category newCategory = CategoryMapper.dtoToEntity(categoryRequest);
+        Category saveCategory = categoryRepository.save(newCategory);
+        return CategoryMapper.categoryToDto(saveCategory);
     }
 
     public List<Category> getAll() {
@@ -45,4 +54,5 @@ public class CategoryService {
 
         throw new RuntimeException("Category not found with id: " + id);
     }
+
 }
