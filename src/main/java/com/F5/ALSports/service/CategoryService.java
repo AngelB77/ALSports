@@ -3,14 +3,21 @@ package com.F5.ALSports.service;
 import com.F5.ALSports.dtosCategory.CategoryMapper;
 import com.F5.ALSports.dtosCategory.CategoryRequest;
 import com.F5.ALSports.dtosCategory.CategoryResponse;
+import com.F5.ALSports.exeptions.EmptyException;
 import com.F5.ALSports.model.Category;
 import com.F5.ALSports.repository.CategoryRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.events.Event;
 
 import java.util.List;
 import java.util.Optional;
 
+@Getter
+@Setter
 @Service
+
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
@@ -41,18 +48,24 @@ public class CategoryService {
         return categoryRepository.findById(id);
     }
 
-    public Category updatedCategory(int id, Category updatedCategory) {
+    public Category updateCategory(int id, Category updateCategory) {
         Optional<Category> foundCategory = categoryRepository.findById(id);
 
         if (foundCategory.isPresent()) {
             Category existingCategory = foundCategory.get();
 
-            existingCategory.setName(updatedCategory.getName());
+            existingCategory.setName(updateCategory.getName());
 
             return categoryRepository.save(existingCategory);
         }
 
         throw new RuntimeException("Category not found with id: " + id);
+    }
+
+    public List<CategoryResponse> getCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        if(categories.isEmpty()) throw  new EmptyException();
+        return categories.stream().map(category -> CategoryMapper.categoryToDto(category)).toList();
     }
 
 }
