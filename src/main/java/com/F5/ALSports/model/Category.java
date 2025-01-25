@@ -8,15 +8,13 @@ import lombok.Setter;
 @Table(name="categories")
 @Getter
 @Setter
-
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(nullable = false)
     private String name;
-    //private long ProductId;
-
 
     public Category(String name) {
         this.name = name;

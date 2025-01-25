@@ -8,6 +8,6 @@ public class CategoryMapper {
     }
 
     public static CategoryResponse categoryToDto(Category category) {
-        return new CategoryResponse(category.toString());
+        return new CategoryResponse(category.getName());
     }
 }

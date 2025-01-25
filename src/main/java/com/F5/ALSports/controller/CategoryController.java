@@ -69,3 +69,4 @@ public class CategoryController {
         return new ResponseEntity<>(categoryService.getCategories(), HttpStatus.OK);
     }
 }
+

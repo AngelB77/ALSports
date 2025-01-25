@@ -6,7 +6,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,5 +24,4 @@ public class AppExceptionHandler {
         ErrorResponse error = new ErrorResponse(Arrays.asList(exception.getMessage()));
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
-
 }

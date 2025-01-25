@@ -9,7 +9,4 @@ public class ALSportsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ALSportsApplication.class, args);
 	}
-
-
-
 }
