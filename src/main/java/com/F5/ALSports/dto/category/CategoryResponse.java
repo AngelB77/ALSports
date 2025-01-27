@@ -1,4 +1,4 @@
-package com.F5.ALSports.dtosCategory;
+package com.F5.ALSports.dto.category;
 
 public record CategoryResponse(
         String name

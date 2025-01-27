@@ -1,7 +1,7 @@
 package com.F5.ALSports.controller;
 
-import com.F5.ALSports.dtosCategory.CategoryRequest;
-import com.F5.ALSports.dtosCategory.CategoryResponse;
+import com.F5.ALSports.dto.category.CategoryRequest;
+import com.F5.ALSports.dto.category.CategoryResponse;
 import com.F5.ALSports.model.Category;
 import com.F5.ALSports.service.CategoryService;
 import jakarta.validation.Valid;
@@ -20,16 +20,6 @@ public class CategoryController {
 
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
-    }
-
-    @GetMapping
-    public List<Category> getAllCategories() {
-        return categoryService.getAll();
-    }
-
-    @PostMapping
-    public void createCategory(@RequestBody Category newCategory){
-        categoryService.addCategory(newCategory);
     }
 
     @DeleteMapping("/{id}")
