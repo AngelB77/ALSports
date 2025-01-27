@@ -1,4 +1,4 @@
-package com.F5.ALSports.dto;
+package com.F5.ALSports.dto.product;
 
 public record ProductResponse(
         String name,

@@ -1,6 +1,7 @@
-package com.F5.ALSports.dto;
+package com.F5.ALSports.dto.product;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
 public record ProductRequest(

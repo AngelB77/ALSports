@@ -1,4 +1,4 @@
-package com.F5.ALSports.dto;
+package com.F5.ALSports.dto.product;
 
 import com.F5.ALSports.model.Product;
 
