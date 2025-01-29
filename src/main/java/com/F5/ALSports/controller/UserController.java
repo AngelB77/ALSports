@@ -5,6 +5,7 @@ import com.F5.ALSports.model.Product;
 import com.F5.ALSports.model.User;
 import com.F5.ALSports.service.ProductService;
 import com.F5.ALSports.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,8 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public void creteUsers(@RequestBody User newUser) {
+    public void  createUsers(@Valid @RequestBody User newUser) {
+
         userService.addUser(newUser);
     }
 
