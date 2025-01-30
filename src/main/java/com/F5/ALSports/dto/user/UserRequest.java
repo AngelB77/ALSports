@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.URL;
 
 public record UserRequest(
 
-        @NotBlank(message = "Name is required")
+        @NotBlank(message = "Name can't be empty ")
         String name,
         @Pattern(regexp = "Is not a email format")
         String email,
