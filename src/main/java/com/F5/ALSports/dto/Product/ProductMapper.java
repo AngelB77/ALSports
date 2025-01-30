@@ -1,6 +1,5 @@
-package com.F5.ALSports.dto;
+package com.F5.ALSports.dto.Product;
 
-import com.F5.ALSports.model.Category;
 import com.F5.ALSports.model.Product;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,7 +11,7 @@ public class ProductMapper {
           productRequest.ImageUrl());
     }
     public static ProductResponse entityTodto(Product product) {
-        return new ProductResponse(product.getName(), //product.getPrice(),
+        return new ProductResponse(product.getName(),product.getPrice(),
                 product.getImageUrl());
 
         }

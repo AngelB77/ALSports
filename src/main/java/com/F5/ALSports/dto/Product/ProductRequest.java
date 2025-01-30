@@ -1,7 +1,6 @@
-package com.F5.ALSports.dto;
+package com.F5.ALSports.dto.Product;
 
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 
 public record ProductRequest(
         @NotBlank(message = "Name is required")
