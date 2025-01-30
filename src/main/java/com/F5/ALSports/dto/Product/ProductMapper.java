@@ -13,7 +13,6 @@ public class ProductMapper {
     public static ProductResponse entityTodto(Product product) {
         return new ProductResponse(product.getName(),product.getPrice(),
                 product.getImageUrl());
-
         }
     }
 
