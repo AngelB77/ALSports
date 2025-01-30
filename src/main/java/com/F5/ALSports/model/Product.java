@@ -2,7 +2,15 @@ package com.F5.ALSports.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+import org.hibernate.validator.constraints.URL;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 @Entity
 @Table(name="products")
 public class Product {
@@ -13,13 +21,22 @@ public class Product {
     private int price;
     private String imageUrl;
 
-public Product() {
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 
+    public Product(@NotBlank(message = "Name is required") String name, int price, @NotBlank(message = "Url is required") String s) {
+    }
 }
-    public Product(String name, int price, String imageUrl) {
+
+   /* public Product(String name, int price, String imageUrl, Category category) {
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.category = category;
+    }
+
+    public Product() {
     }
 
     public Product(int id) {
@@ -58,3 +75,4 @@ public Product() {
         this.imageUrl = imageUrl;
     }
 }
+*/

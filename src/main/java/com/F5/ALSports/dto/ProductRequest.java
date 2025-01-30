@@ -8,11 +8,8 @@ public record ProductRequest(
         String name,
 
         int price,
-        @URL(
-                protocol = "https",
-                host = "example.com",
-                message = "The image URL is not correct"
-        )
+
+        @NotBlank(message = "Url is required")
         String ImageUrl
 
 ) {

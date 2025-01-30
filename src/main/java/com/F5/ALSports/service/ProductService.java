@@ -1,7 +1,10 @@
 package com.F5.ALSports.service;
 
+import com.F5.ALSports.model.Category;
 import com.F5.ALSports.model.Product;
+import com.F5.ALSports.repository.CategoryRepository;
 import com.F5.ALSports.repository.ProductRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +14,11 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     public List<Product> getAll() {
@@ -21,8 +26,14 @@ public class ProductService {
     }
 
     public Product addProduct(Product newProduct){
-
-        return productRepository.save(newProduct);
+        int categoryId = newProduct.getCategory().getId();
+        Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+        if (optionalCategory.isPresent()){
+            Category category = optionalCategory.get();
+            newProduct.setCategory(category);
+            return productRepository.save(newProduct);
+        }
+        throw  new RuntimeException("Category not found");
     }
 
     public void deleteProduct(int id) {
