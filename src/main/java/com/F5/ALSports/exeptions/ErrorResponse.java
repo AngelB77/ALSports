@@ -4,15 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
+//import java.util.List;
 
 @Getter
 @Setter
 public class ErrorResponse {
-    private List<String> messages;
+    private String messages;
     private LocalDateTime timestamp;
 
-    public ErrorResponse(List<String> messages) {
+    public ErrorResponse(String messages) {
         this.messages = messages;
         this.timestamp = LocalDateTime.now();
     }

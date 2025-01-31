@@ -1,6 +1,7 @@
 package com.F5.ALSports.controller;
 
 
+import com.F5.ALSports.exeptions.ObjectNotFoundException;
 import com.F5.ALSports.model.Product;
 import com.F5.ALSports.service.ProductService;
 import org.springframework.http.HttpStatus;
@@ -48,7 +49,7 @@ public class ProductController {
         if(foundProduct.isPresent()) {
             return new ResponseEntity<>(foundProduct.get(), HttpStatus.FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        throw new ObjectNotFoundException("Product",id);
     }
     @PutMapping("/products/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody  Product
