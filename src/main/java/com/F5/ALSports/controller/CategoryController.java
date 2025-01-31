@@ -5,6 +5,7 @@ import com.F5.ALSports.dto.category.CategoryResponse;
 import com.F5.ALSports.model.Category;
 import com.F5.ALSports.service.CategoryService;
 import jakarta.validation.Valid;
+import com.F5.ALSports.exeptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class CategoryController {
         if(foundCategory.isPresent()) {
             return new ResponseEntity<>(foundCategory.get(), HttpStatus.FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        throw new ObjectNotFoundException("Category", id);
 
     }
 
@@ -44,7 +45,8 @@ public class CategoryController {
             Category category = categoryService.updateCategory(id,updatedCategory);
             return new ResponseEntity<>(category, HttpStatus.OK);
         } catch (Exception e) {
-            throw new RuntimeException("Category not found with id: " + id);
+            throw new ObjectNotFoundException("Category",id);
+
         }
     }
 

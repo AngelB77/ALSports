@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class AppExceptionHandler {
+
     @ExceptionHandler(ObjectNotFoundException.class)
     public ResponseEntity<Object> handleObjectNotFoundException(ObjectNotFoundException exception) {
         ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
