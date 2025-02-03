@@ -3,6 +3,7 @@ package com.F5.ALSports.controller;
 
 import com.F5.ALSports.model.Product;
 import com.F5.ALSports.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
+
         this.productService = productService;
     }
 
@@ -25,7 +27,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public void creteProduct(@RequestBody Product newProduct) {
+    public void creteProduct(@Valid @RequestBody Product newProduct) {
         productService.addProduct(newProduct);
     }
 
@@ -44,7 +46,7 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     @PutMapping("/products/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody  Product
+    public ResponseEntity<Product> updateProduct(@PathVariable int id, @Valid @RequestBody  Product
             updatedProduct) {
 
         try {
