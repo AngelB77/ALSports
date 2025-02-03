@@ -2,11 +2,15 @@ package com.F5.ALSports.model;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+import org.hibernate.validator.constraints.URL;
 
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
+@Builder
 @Entity
 @Table(name="products")
 public class Product {
@@ -17,17 +21,58 @@ public class Product {
     private int price;
     private String imageUrl;
 
-    public Product() {
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 
+    public Product(@NotBlank(message = "Name is required") String name, int price, @NotBlank(message = "Url is required") String s) {
     }
-    public Product(String name, int price, String imageUrl) {
+}
+
+   /* public Product(String name, int price, String imageUrl, Category category) {
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.category = category;
+    }
+
+    public Product() {
     }
 
     public Product(int id) {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
+*/

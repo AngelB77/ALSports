@@ -26,8 +26,14 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public void creteProduct(@RequestBody Product newProduct) {
-        productService.addProduct(newProduct);
+    public ResponseEntity<Product> creteProduct(@RequestBody Product newProduct) {
+        try {
+
+            Product createdProduct = productService.addProduct(newProduct);
+            return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/products/{id}")

@@ -12,9 +12,9 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    //private long ProductId;
 
+    @Column(nullable = false)
+    private String name;
 
     public Category(String name) {
         this.name = name;
