@@ -10,9 +10,13 @@ public class UserMapper {
         return new User(userRequest.name(), userRequest.email(),
                 userRequest.password());
     }
+
     public static UserResponse entityTodto(User user) {
         return new UserResponse(user.getName(), user.getEmail(),
                 user.getPassword());
+    }
+
+}
 
 
 

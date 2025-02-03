@@ -2,6 +2,8 @@ package com.F5.ALSports.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 @AllArgsConstructor
@@ -21,6 +23,8 @@ public class User {
     private String password;
 
 
+    public User(@NotBlank(message = "Name can't be empty ") String name, @Pattern(regexp = "Is not a email format") String email, String password) {
+    }
 }
 
 

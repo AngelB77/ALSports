@@ -1,9 +1,7 @@
 package com.F5.ALSports.controller;
 
 
-import com.F5.ALSports.model.Product;
 import com.F5.ALSports.model.User;
-import com.F5.ALSports.service.ProductService;
 import com.F5.ALSports.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -23,8 +21,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
-
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userService.getAll();
@@ -32,7 +28,6 @@ public class UserController {
 
     @PostMapping("/users")
     public void  createUsers(@Valid @RequestBody User newUser) {
-
         userService.addUser(newUser);
     }
 
@@ -51,17 +46,14 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody  User
-            updatedUser) {
-
+    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User updatedUser) {
         try {
             //actualizar los campos del product en el caso de que encuentre
             User user = userService.updatedUser(id, updatedUser);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             //En el caso de que no se encuentre devuelve no found
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
+            throw new RuntimeException("User not found with id: " + id);
         }
     }
 }
