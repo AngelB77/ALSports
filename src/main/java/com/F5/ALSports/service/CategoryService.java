@@ -28,7 +28,7 @@ public class CategoryService {
     public CategoryResponse saveCategory(CategoryRequest categoryRequest) {
         Category newCategory = CategoryMapper.dtoToEntity(categoryRequest);
         Category saveCategory = categoryRepository.save(newCategory);
-        return CategoryMapper.categoryToDto(saveCategory);
+        return CategoryMapper.EntityToDto(saveCategory);
     }
 
     public List<Category> getAll() {
@@ -64,7 +64,7 @@ public class CategoryService {
     public List<CategoryResponse> getCategories() {
         List<Category> categories = categoryRepository.findAll();
         if(categories.isEmpty()) throw  new EmptyException();
-        return categories.stream().map(category -> CategoryMapper.categoryToDto(category)).toList();
+        return categories.stream().map(category -> CategoryMapper.EntityToDto(category)).toList();
     }
 
 }
