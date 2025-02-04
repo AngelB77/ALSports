@@ -1,6 +1,7 @@
 package com.F5.ALSports.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -22,6 +23,7 @@ public class Product {
     private String imageUrl;
 
     @ManyToOne
+    @JsonIgnoreProperties("products")
     @JoinColumn(name="category_id")
     private Category category;
 

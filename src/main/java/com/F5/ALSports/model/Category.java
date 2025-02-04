@@ -1,5 +1,6 @@
 package com.F5.ALSports.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnoreProperties("categories")
     private List<Product>products = new ArrayList<>();
 
     public Category(String name) {
