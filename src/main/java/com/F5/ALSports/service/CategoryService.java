@@ -3,7 +3,7 @@ package com.F5.ALSports.service;
 import com.F5.ALSports.dto.category.CategoryMapper;
 import com.F5.ALSports.dto.category.CategoryRequest;
 import com.F5.ALSports.dto.category.CategoryResponse;
-import com.F5.ALSports.exeptions.EmptyException;
+import com.F5.ALSports.exceptions.EmptyException;
 import com.F5.ALSports.model.Category;
 import com.F5.ALSports.repository.CategoryRepository;
 import lombok.Getter;

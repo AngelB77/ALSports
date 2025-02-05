@@ -55,13 +55,10 @@ public class ProductController {
             updatedProduct) {
 
         try {
-            //actualizar los campos del product en el caso de que encuentre
             Product product = productService.updatedProduct(id, updatedProduct);
             return new ResponseEntity<>(product, HttpStatus.OK);
         } catch (Exception e) {
-            //En el caso de que no se encuentre devuelve no found
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
         }
     }
 }

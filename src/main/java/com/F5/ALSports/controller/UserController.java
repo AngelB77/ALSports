@@ -48,11 +48,11 @@ public class UserController {
     @PutMapping("/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User updatedUser) {
         try {
-            //actualizar los campos del product en el caso de que encuentre
+
             User user = userService.updatedUser(id, updatedUser);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
-            //En el caso de que no se encuentre devuelve no found
+
             throw new RuntimeException("User not found with id: " + id);
         }
     }

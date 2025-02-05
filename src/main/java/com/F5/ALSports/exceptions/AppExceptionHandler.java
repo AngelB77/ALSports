@@ -1,4 +1,4 @@
-package com.F5.ALSports.exeptions;
+package com.F5.ALSports.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
