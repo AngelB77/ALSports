@@ -13,7 +13,8 @@ public record ProductRequest(
                 host = "example.com",
                 message = "The image URL is not correct"
         )
-        String ImageUrl
+        String ImageUrl,
+        int categoryId
 
 ) {
 }

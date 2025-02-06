@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.hibernate.validator.constraints.URL;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +26,7 @@ public class Product {
     @JoinColumn(name="category_id")
     private Category category;
 
-    public Product(@NotBlank(message = "Name is required") String name, int price, @NotBlank(message = "Url is required") String s) {
+    public Product(@NotBlank(message = "Name is required") String name, int price, @NotBlank(message = "Url is required") String s, Category category) {
     }
 }
 
