@@ -9,7 +9,7 @@ public class ProductMapper {
                 productRequest.ImageUrl(),category);
     }
     public static ProductResponse entityTodto(Product product) {
-        return new ProductResponse(product.getName(), //product.getPrice(),
+        return new ProductResponse(product.getName(), product.getPrice(),
                 product.getImageUrl(),product.getCategory().getName());
 
     }
